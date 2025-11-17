@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');  // Route nommée 'home'
 
-Route::get('product', function () {
-    return view('product');
-})->name('product');  // Route nommée 'product'
+Route::resource('products', ProductController::class);
+
 
 Route::get('detailProduct', function () {
     return view('detailProduct');
