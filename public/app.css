@@ -1,0 +1,201 @@
+/* Assure que le body et html prennent tout l'espace disponible */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Conteneur principal avec flexbox */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* S'assure que body occupe toute la hauteur */
+}
+
+/* Le contenu principal prend tout l'espace disponible */
+.container {
+    flex-grow: 1;  /* Le contenu occupe l'espace restant */
+}
+
+/* Navbar styles */
+.navbar {
+    position: fixed;  /* Fixe la navbar en haut */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4491e3;  /* Bleu pastel */
+    padding: 12px 30px;  /* Réduit le padding pour une hauteur plus modérée */
+    z-index: 1000;  /* S'assurer que la navbar est toujours au-dessus */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;  /* Utilisation de flexbox */
+    justify-content: space-between;  /* Espace entre l'image et les liens */
+    align-items: center;  /* Aligne verticalement les éléments */
+}
+
+.navbar .logo {
+    height: 35px;  /* Ajuste la hauteur de l'image */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;  /* Aligne les liens à droite */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;  /* Transition pour une animation fluide */
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    width: 0;  /* Le soulignement commence avec une largeur de 0 */
+    height: 2px;  /* Hauteur du soulignement */
+    background-color: #fff;
+    left: 50%;  /* Le soulignement commence au centre */
+    bottom: 0;
+    transform: translateX(-50%);  /* Centrer le soulignement */
+    transform-origin: center center;  /* S'assure que la transformation est centrée */
+    transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;  /* Le soulignement s'étend à 100% */
+    transform: translateX(-50%) scaleX(1);  /* Le soulignement s'étend de manière symétrique */
+}
+
+body {
+    margin-top: 80px;  /* Ajuste l'espace sous la navbar */
+}
+
+/* Footer général */
+.footer {
+    background-color: #2C3E50;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;  /* Organise les sections en colonne */
+    justify-content: space-between;  /* Espace entre les sections */
+    width: 100%;  /* Assure que le footer occupe toute la largeur disponible */
+    padding: 20px 20px;  /* Réduit le padding pour un footer plus compact */
+    margin: 0 auto;  /* Centrer le footer sur la page */
+    margin-top: auto;  /* Cette propriété place le footer collé en bas de la page */
+}
+
+/* Conteneur du footer */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 100%;  /* Empêche le contenu de dépasser */
+    margin: 0 auto;
+}
+
+/* Sections du footer */
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+}
+
+.footer-section p {
+    font-size: 14px;
+    color: #bdc3c7;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #bdc3c7;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+/* Réseaux sociaux */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 18px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #3498db;
+}
+
+/* Formulaire de newsletter */
+.footer-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ecf0f1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.footer-section button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-section button:hover {
+    background-color: #2980b9;
+}
+
+/* Footer bottom collé en bas du footer */
+.footer-bottom {
+    text-align: center;
+    padding: 15px;
+    background-color: #34495e;
+    margin-top: 20px;  /* Ajout d'un espacement avant la section "Droits réservés" */
+    width: 100%; /* Assure que la section "Tous droits réservés" prend toute la largeur */
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+    color: #ecf0f1;
+}
