@@ -13,7 +13,7 @@ body {
     flex-grow: 1;
 }
 
-/* Navbar */
+/* --- Navbar --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -25,24 +25,28 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px; /* Ajoute un peu d'espace horizontal */
 }
 
+/* Logo */
 .navbar .logo {
     height: 35px;
 }
 
-.navbar ul {
+/* Liste des liens (centrés) */
+.navbar .nav-links {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;  /* Centre les liens */
     margin: 0;
     padding: 0;
 }
 
-.navbar li {
+.navbar .nav-links li {
     margin: 0 15px;
 }
 
+/* Liens dans la navbar */
 .navbar a {
     text-decoration: none;
     color: #fff;
@@ -54,6 +58,7 @@ body {
     position: relative;
 }
 
+/* Animation sous les liens au survol */
 .navbar a::after {
     content: "";
     position: absolute;
@@ -70,6 +75,92 @@ body {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
 }
+
+/* Menu compte (dropdown) */
+.navbar .nav-account {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;  /* Le menu "Compte" est à droite */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-account .dropdown {
+    position: relative;
+}
+
+.navbar .nav-account .dropdown-toggle {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;  /* Centrer l'icône et le texte verticalement */
+    gap: 8px; /* Espacement entre l'icône et le texte */
+}
+
+/* Taille et couleur de l'icône */
+.navbar .nav-account .dropdown-toggle i {
+    font-size: 20px;
+}
+
+/* Menu déroulant */
+.navbar .nav-account .dropdown-menu {
+    display: none; /* Masquer le menu par défaut */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #4491e3;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar .nav-account .dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.navbar .nav-account .dropdown-menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px;
+    display: block;
+}
+
+.navbar .nav-account .dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Affichage du menu déroulant lors du survol */
+.navbar .nav-account .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Bouton de déconnexion */
+.navbar form button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.navbar form button:hover {
+    color: #f39c12;
+}
+
+
 
 body {
     margin-top: 80px;
