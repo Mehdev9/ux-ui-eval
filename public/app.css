@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
@@ -7,6 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    margin-top: 80px;
 }
 
 .container {
@@ -25,6 +27,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 .navbar .logo {
@@ -34,7 +37,8 @@ body {
 .navbar ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    /* Centrage des liens */
     margin: 0;
     padding: 0;
 }
@@ -54,28 +58,83 @@ body {
     position: relative;
 }
 
-.navbar a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #fff;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    transition: width 0.3s ease, transform 0.3s ease;
-}
-
 .navbar a:hover::after {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
 }
 
-body {
-    margin-top: 80px;
+/* Aligner les éléments du compte et du panier */
+.nav-account {
+    display: flex;
+    align-items: center;
 }
 
-/* --- Séparation --- */
+.nav-account .dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-account .dropdown a {
+    display: flex;
+    align-items: center;
+    /* Alignement vertical de l'icône et du texte */
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.nav-account .dropdown a i {
+    margin-right: 8px;
+    /* Espacement entre l'icône et le texte */
+}
+
+/* Style du panier (icône) */
+.nav-account .cart-icon {
+    margin-left: 20px;
+    /* Espacement entre le compte et l'icône du panier */
+    display: flex;
+    align-items: center;
+}
+
+.nav-account .cart-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+/* Dropdown menu */
+.nav-account .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    width: 180px;
+}
+
+.nav-account .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-account .dropdown-menu a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.nav-account .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+/* --- Footer --- */
 
 /* Footer */
 .footer {
@@ -128,7 +187,8 @@ body {
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #dce4e9; /* Assombrissement des liens */
+    color: #dce4e9;
+    /* Assombrissement des liens */
     font-size: 14px;
     position: relative;
     transition: color 0.3s, text-decoration 0.3s;
@@ -148,7 +208,8 @@ body {
 
 .footer-section ul li a:hover {
     color: #fff;
-    text-decoration: none; /* Retirer le soulignement traditionnel pour l'effet custom */
+    text-decoration: none;
+    /* Retirer le soulignement traditionnel pour l'effet custom */
 }
 
 .footer-section ul li a:hover::after {
@@ -213,14 +274,18 @@ body {
 
 /* --- HEADER --- */
 .header-section {
-    background-size: cover; /* L'image couvre toute la surface */
+    background-size: cover;
+    /* L'image couvre toute la surface */
     background-position: center;
-    height: 500px; /* Ajuste la hauteur selon tes préférences */
+    height: 500px;
+    /* Ajuste la hauteur selon tes préférences */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* S'assure que le header prend toute la largeur */
-    position: relative; /* Pour le contrôle de l'overlay */
+    width: 100%;
+    /* S'assure que le header prend toute la largeur */
+    position: relative;
+    /* Pour le contrôle de l'overlay */
 }
 
 
@@ -231,16 +296,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Assombrissement de l'overlay, ajuste l'opacité selon tes besoins */
-    z-index: 0; /* Assurez-vous que l'overlay soit sous le contenu */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Assombrissement de l'overlay, ajuste l'opacité selon tes besoins */
+    z-index: 0;
+    /* Assurez-vous que l'overlay soit sous le contenu */
 }
 
 /* Titre et texte dans le header */
 .header-section h1,
 .header-section p,
 .header-section .btn {
-    z-index: 2; /* Placer le texte et les boutons au-dessus de l'overlay */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Ombre sur le texte pour plus de contraste */
+    z-index: 2;
+    /* Placer le texte et les boutons au-dessus de l'overlay */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    /* Ombre sur le texte pour plus de contraste */
     color: white;
 }
 
@@ -256,6 +325,6 @@ body {
 }
 
 .header-section .btn:hover {
-    background-color: #2980b9; /* Changement de couleur au survol */
+    background-color: #2980b9;
+    /* Changement de couleur au survol */
 }
-
