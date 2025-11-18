@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <img src="path-to-your-logo.png" alt="Logo" class="logo">
+   <a href="{{route ('home')}}"> <img src="assets/img/header-1.jpg" alt="Logo" class="logo rounded-lg"></a>
     <ul>
         <li><a href="{{ route('home') }}">Accueil</a></li>
         <li><a href="{{ route('profil') }}">Profil</a></li>

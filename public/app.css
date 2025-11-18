@@ -1,44 +1,40 @@
-/* Assure que le body et html prennent tout l'espace disponible */
 html, body {
     height: 100%;
     margin: 0;
 }
 
-/* Conteneur principal avec flexbox */
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100%; /* S'assure que body occupe toute la hauteur */
+    min-height: 100%;
 }
 
-/* Le contenu principal prend tout l'espace disponible */
 .container {
-    flex-grow: 1;  /* Le contenu occupe l'espace restant */
+    flex-grow: 1;
 }
 
-/* Navbar styles */
+/* Navbar */
 .navbar {
-    position: fixed;  /* Fixe la navbar en haut */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #4491e3;  /* Bleu pastel */
-    padding: 12px 30px;  /* Réduit le padding pour une hauteur plus modérée */
-    z-index: 1000;  /* S'assurer que la navbar est toujours au-dessus */
+    background-color: #4491e3;
+    z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;  /* Utilisation de flexbox */
-    justify-content: space-between;  /* Espace entre l'image et les liens */
-    align-items: center;  /* Aligne verticalement les éléments */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .logo {
-    height: 35px;  /* Ajuste la hauteur de l'image */
+    height: 35px;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;  /* Aligne les liens à droite */
+    justify-content: flex-end;
     margin: 0;
     padding: 0;
 }
@@ -52,7 +48,7 @@ body {
     color: #fff;
     font-size: 18px;
     font-weight: 600;
-    transition: all 0.3s ease;  /* Transition pour une animation fluide */
+    transition: all 0.3s ease;
     padding: 10px;
     border-radius: 5px;
     position: relative;
@@ -61,50 +57,49 @@ body {
 .navbar a::after {
     content: "";
     position: absolute;
-    width: 0;  /* Le soulignement commence avec une largeur de 0 */
-    height: 2px;  /* Hauteur du soulignement */
+    width: 0;
+    height: 2px;
     background-color: #fff;
-    left: 50%;  /* Le soulignement commence au centre */
+    left: 50%;
     bottom: 0;
-    transform: translateX(-50%);  /* Centrer le soulignement */
-    transform-origin: center center;  /* S'assure que la transformation est centrée */
+    transform: translateX(-50%);
     transition: width 0.3s ease, transform 0.3s ease;
 }
 
 .navbar a:hover::after {
-    width: 100%;  /* Le soulignement s'étend à 100% */
-    transform: translateX(-50%) scaleX(1);  /* Le soulignement s'étend de manière symétrique */
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
 }
 
 body {
-    margin-top: 80px;  /* Ajuste l'espace sous la navbar */
+    margin-top: 80px;
 }
 
-/* Footer général */
+/* --- Séparation --- */
+
+/* Footer */
 .footer {
-    background-color: #2C3E50;
+    background-color: #4491e3;
     color: #fff;
     font-family: 'Roboto', sans-serif;
     display: flex;
-    flex-direction: column;  /* Organise les sections en colonne */
-    justify-content: space-between;  /* Espace entre les sections */
-    width: 100%;  /* Assure que le footer occupe toute la largeur disponible */
-    padding: 20px 20px;  /* Réduit le padding pour un footer plus compact */
-    margin: 0 auto;  /* Centrer le footer sur la page */
-    margin-top: auto;  /* Cette propriété place le footer collé en bas de la page */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 20px;
+    margin: 0 auto;
+    margin-top: auto;
 }
 
-/* Conteneur du footer */
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
-    max-width: 100%;  /* Empêche le contenu de dépasser */
+    max-width: 100%;
     margin: 0 auto;
 }
 
-/* Sections du footer */
 .footer-section {
     flex: 1;
     min-width: 250px;
@@ -114,12 +109,12 @@ body {
 .footer-section h4 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #ecf0f1;
+    color: #0c4a72;
 }
 
 .footer-section p {
     font-size: 14px;
-    color: #bdc3c7;
+    color: #ffffff;
 }
 
 .footer-section ul {
@@ -133,16 +128,34 @@ body {
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #bdc3c7;
+    color: #dce4e9; /* Assombrissement des liens */
     font-size: 14px;
-    transition: color 0.3s;
+    position: relative;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.footer-section ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease, transform 0.3s ease;
 }
 
 .footer-section ul li a:hover {
     color: #fff;
+    text-decoration: none; /* Retirer le soulignement traditionnel pour l'effet custom */
 }
 
-/* Réseaux sociaux */
+.footer-section ul li a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+}
+
 .social-icons {
     display: flex;
     gap: 15px;
@@ -155,10 +168,9 @@ body {
 }
 
 .social-icon:hover {
-    color: #3498db;
+    color: #0c4a72;
 }
 
-/* Formulaire de newsletter */
 .footer-section form {
     display: flex;
     flex-direction: column;
@@ -174,24 +186,23 @@ body {
 
 .footer-section button {
     padding: 10px;
-    background-color: #3498db;
+    background-color: #0c4a72;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .footer-section button:hover {
     background-color: #2980b9;
+    filter: brightness(90%);
 }
 
-/* Footer bottom collé en bas du footer */
 .footer-bottom {
     text-align: center;
-    padding: 15px;
-    background-color: #34495e;
-    margin-top: 20px;  /* Ajout d'un espacement avant la section "Droits réservés" */
-    width: 100%; /* Assure que la section "Tous droits réservés" prend toute la largeur */
+    margin-top: 20px;
+    width: 100%;
 }
 
 .footer-bottom p {
@@ -199,3 +210,52 @@ body {
     font-size: 14px;
     color: #ecf0f1;
 }
+
+/* --- HEADER --- */
+.header-section {
+    background-size: cover; /* L'image couvre toute la surface */
+    background-position: center;
+    height: 500px; /* Ajuste la hauteur selon tes préférences */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* S'assure que le header prend toute la largeur */
+    position: relative; /* Pour le contrôle de l'overlay */
+}
+
+
+/* L'overlay sombre */
+.header-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Assombrissement de l'overlay, ajuste l'opacité selon tes besoins */
+    z-index: 0; /* Assurez-vous que l'overlay soit sous le contenu */
+}
+
+/* Titre et texte dans le header */
+.header-section h1,
+.header-section p,
+.header-section .btn {
+    z-index: 2; /* Placer le texte et les boutons au-dessus de l'overlay */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Ombre sur le texte pour plus de contraste */
+    color: white;
+}
+
+/* Ajuste le style du bouton */
+.header-section .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 25px;
+    background-color: #3498db;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.header-section .btn:hover {
+    background-color: #2980b9; /* Changement de couleur au survol */
+}
+
