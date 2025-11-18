@@ -18,7 +18,8 @@ Route::get('detailProduct', function () {
 
 Route::get('profil', function () {
     return view('profil');
-})->name('profil');  // Route nommée 'profil'
+})->name('profil')->middleware('auth');
+
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);

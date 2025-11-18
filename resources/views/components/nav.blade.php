@@ -7,7 +7,9 @@
     <ul class="nav-links">
         <li><a href="{{ route('home') }}">Accueil</a></li>
         <li><a href="{{ route('products.index') }}">Produits</a></li>
-        <li><a href="{{ route('detailProduct') }}">Détail</a></li>
+        <li><a href="{{ Auth::check() ? route('profil') : route('login') }}">Profil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Nous contacter</a></li>
     </ul>
 
     <!-- Menu déroulant pour le compte (à droite) -->
@@ -23,7 +25,6 @@
                 @endguest
                 
                 @auth
-                    <li><a href="{{ route('profil') }}">Profil</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST" class="logout-form">
                             @csrf

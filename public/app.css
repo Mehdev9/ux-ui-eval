@@ -87,6 +87,7 @@ body {
 
 .navbar .nav-account .dropdown {
     position: relative;
+    margin-right: 50px;
 }
 
 .navbar .nav-account .dropdown-toggle {
@@ -120,7 +121,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.7s ease;
 }
 
 .navbar .nav-account .dropdown-menu li {
@@ -157,9 +158,10 @@ body {
 }
 
 .navbar form button:hover {
-    color: #f39c12;
+    border-radius: 10%;
+    color: white;
+    list-style: none;
 }
-
 
 
 body {
