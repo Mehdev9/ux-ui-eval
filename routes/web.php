@@ -20,6 +20,24 @@ Route::get('profil', function () {
     return view('profil');
 })->name('profil')->middleware('auth');
 
+use App\Http\Controllers\CartController;
+
+Route::prefix('cart')->group(function() {
+    // Affichage du panier
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    
+    // Ajouter un produit au panier
+    Route::post('add/{id}', [CartController::class, 'add'])->name('cart.add');
+    
+    // Supprimer un produit du panier
+    Route::get('remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    
+    // Mettre à jour la quantité d'un produit dans le panier
+    Route::post('update/{id}', [CartController::class, 'update'])->name('cart.update');
+});
+
+
+
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);

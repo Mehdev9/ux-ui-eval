@@ -34,5 +34,14 @@
                 @endauth
             </ul>
         </li>
+        
+        <!-- Si l'utilisateur est connecté, ajouter l'icône panier -->
+        @auth
+        <li class="cart-icon">
+            <a href="{{ route('cart.index') }}" class="cart-link">
+                <i class="fas fa-shopping-cart"></i> <!-- Icône Panier -->
+            </a>
+        </li>
+        @endauth
     </ul>
 </nav>
