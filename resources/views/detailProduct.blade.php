@@ -15,7 +15,7 @@
                     <div class="row">
                         <!-- Image du produit -->
                         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-                            <img src="{{ asset('assets/img/header-1.jpg') }}" alt="{{ $product->name }}" class="img-fluid rounded shadow-lg">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="img-fluid rounded shadow-lg">
                         </div>
 
                         <!-- Détails du produit (Texte et Boutons à droite) -->
@@ -28,7 +28,10 @@
 
                             <!-- Boutons alignés en bas à droite -->
                             <div class="mt-4 d-flex justify-content-end">
-                                <a href="#" class="btn btn-lg btn-success btn-rounded shadow-sm mr-2">Ajouter au panier</a>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-lg btn-success btn-rounded shadow-sm mr-2">Ajouter au panier</button>
+                                </form>
                                 <a href="{{ route('products.index') }}" class="btn btn-lg btn-secondary btn-rounded shadow-sm">Retour à la liste</a>
                             </div>
                         </div>
