@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -25,6 +26,8 @@ class CartController extends Controller
     // Ajouter un produit au panier
     public function add(Request $request, $id)
     {
+        $productModel = Product::findOrFail($id); // Fetch the product from the database
+
         // Récupérer les produits du panier existants dans la session
         $cart = session('cart', []);
 
@@ -41,11 +44,11 @@ class CartController extends Controller
         // Si l'article n'est pas trouvé, on l'ajoute
         if (!$found) {
             $product = [
-                'id' => $id,
-                'name' => 'Nom du produit', // Récupère ces infos de ton modèle produit
-                'price' => 100, // Récupère le prix réel
+                'id' => $productModel->id,
+                'name' => $productModel->name,
+                'price' => $productModel->price,
                 'quantity' => 1,
-                'image' => 'image.jpg' // Image de ton produit
+                'image' => $productModel->image_url
             ];
             $cart[] = $product;
         }
@@ -53,7 +56,7 @@ class CartController extends Controller
         // Sauvegarde le panier dans la session
         session(['cart' => $cart]);
 
-        return redirect()->route('cart.index');
+        return redirect()->route('products.index');
     }
 
     // Supprimer un produit du panier

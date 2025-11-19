@@ -30,14 +30,12 @@
     @include('components.nav')
 
     <!-- Header -->
-    <header class="header-section" style="background-image: url('{{ asset('assets/img/header-1.jpg') }}');">
+    <header class="header-section" style="background-image: url('{{ asset('assets/img/header-1.jpg') }}'); @yield('header_height')">
         <div class="overlay"></div> <!-- L'overlay sombre -->
         <div class="container-fluid text-center"> <!-- Utilisation de container-fluid pour pleine largeur -->
-            <h1 class="display-4 text-white" data-aos="fade-up">Bienvenue sur Shopera</h1>
-            <p class="lead text-white" data-aos="fade-up" data-aos-delay="300">Les meilleurs PC, claviers, souris et plus pour
-                votre expérience gaming.</p>
-            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg" data-aos="fade-up"
-                data-aos-delay="600">Voir nos produits</a>
+            <h1 class="display-4 text-white" data-aos="fade-up">@yield('header_title', 'Bienvenue sur Shopera')</h1>
+            <p class="lead text-white" data-aos="fade-up" data-aos-delay="300">@yield('header_subtitle', 'Les meilleurs PC, claviers, souris et plus pour votre expérience gaming.')</p>
+            @yield('header_button')
         </div>
     </header>
     <!-- Contenu principal -->

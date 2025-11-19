@@ -2,6 +2,14 @@
 
 @section('title', 'Page d\'accueil')
 
+@section('header_title', 'Bienvenue sur Shopera')
+@section('header_subtitle', 'Les meilleurs PC, claviers, souris et plus pour votre expérience gaming.')
+@section('header_height', 'height: 750px;')
+@section('header_button')
+    <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg" data-aos="fade-up"
+        data-aos-delay="600">Voir nos produits</a>
+@endsection
+
 @section('content')
     
 
