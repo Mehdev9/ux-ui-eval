@@ -2,7 +2,6 @@
 
 @section('header_title', 'Nos produits')
 @section('header_subtitle', 'Découvrez notre sélection de produits.')
-@section('header_height', 'height: 750px;')
 
 @section('content')
     <div class="container mt-5">

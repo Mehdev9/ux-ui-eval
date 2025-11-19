@@ -7,7 +7,9 @@
     <title>@yield('title', 'Mon Application Laravel')</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +25,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
-<body class="bg-light font-roboto">
+<body class="bg-light">
 
     <!-- Navigation -->
     @include('components.nav')
@@ -38,13 +41,15 @@
             @yield('header_button')
         </div>
     </header>
-    <!-- Contenu principal -->
-    <div class="container">
-        @yield('content')
-        <!-- Le contenu spécifique à chaque page -->
-    </div>
-
-    <!-- Footer -->
+        <!-- Contenu principal -->
+        <div class="container">
+            @yield('content')
+            <!-- Le contenu spécifique à chaque page -->
+        </div>
+    
+        @yield('fullwidth_content')
+    
+        <!-- Footer -->
     @include('components.footer')
 
     <!-- jQuery, Bootstrap JS et Popper.js -->
