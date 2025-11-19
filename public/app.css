@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100%;
-    margin-top: 80px;
+    padding-top: 60px; /* Adjust this value to match your navbar's height */
 }
 
 .container {
@@ -277,7 +277,7 @@ body {
     background-size: cover;
     /* L'image couvre toute la surface */
     background-position: center;
-    height: 500px;
+    height: 300px;
     /* Ajuste la hauteur selon tes préférences */
     display: flex;
     justify-content: center;

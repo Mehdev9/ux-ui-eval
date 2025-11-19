@@ -7,9 +7,38 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $query = Product::query();
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->input('search') . '%');
+        }
+
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->input('max_price'));
+        }
+
+        if ($request->filled('type')) {
+            $query->whereIn('type', $request->input('type'));
+        }
+
+        if ($request->filled('brands')) {
+            $query->whereIn('brand', $request->input('brands'));
+        }
+
+        if ($request->input('sort') == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->input('sort') == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        }
+
+        $products = $query->paginate(12)->appends($request->query());
+
         return view('product', compact('products'));
     }
 

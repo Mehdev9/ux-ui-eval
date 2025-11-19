@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('header_title', $product->name)
+@section('header_subtitle', 'Détails du produit')
+@section('header_height', 'height: 300px;')
+
 @section('content')
     <!-- Section principale de l'article -->
     <div class="product-detail py-5" data-aos="fade-up">
