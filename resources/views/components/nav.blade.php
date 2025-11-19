@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <a href="{{ route('home') }}"> 
+    <a href="{{ route('home') }}">
         <img src="assets/img/header-1.jpg" alt="Logo" class="logo rounded-lg">
     </a>
 
@@ -23,7 +23,7 @@
                     <li><a href="{{ route('register') }}">Inscription</a></li>
                     <li><a href="{{ route('login') }}">Connexion</a></li>
                 @endguest
-                
+
                 @auth
                     <li>
                         <form action="{{ route('logout') }}" method="POST" class="logout-form">
@@ -34,14 +34,54 @@
                 @endauth
             </ul>
         </li>
-        
-        <!-- Si l'utilisateur est connecté, ajouter l'icône panier -->
+
+        <!-- Si l'utilisateur est connecté, afficher l'icône panier avec le compteur -->
         @auth
-        <li class="cart-icon">
-            <a href="{{ route('cart.index') }}" class="cart-link">
-                <i class="fas fa-shopping-cart"></i> <!-- Icône Panier -->
-            </a>
-        </li>
+            <li class="cart-icon">
+                <a href="{{ route('cart.index') }}" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i> <!-- Icône Panier -->
+                    <!-- Compteur de produits dans le panier -->
+                    <span class="cart-counter">
+                        {{ count(session('cart', [])) }}
+                    </span>
+                </a>
+            </li>
         @endauth
+
     </ul>
 </nav>
+
+<style>
+    .cart-icon {
+        position: relative;
+    }
+
+    .cart-counter {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #e74c3c; /* Rouge vif pour la bulle */
+        color: white;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border-radius: 50%;
+        width: 20px; /* Taille de la bulle */
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+</style>
+
+
+<script>
+    window.addEventListener('cartUpdated', function(event) {
+        const cartCount = event.detail.cartCount;
+        const cartCountElement = document.querySelector('.cart-counter'); // Sélectionner par classe
+        if (cartCountElement) {
+            cartCountElement.innerText = cartCount; // Met à jour l'élément avec le nombre d'articles
+        }
+    });
+</script>
+
