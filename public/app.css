@@ -277,8 +277,7 @@ body {
     background-size: cover;
     /* L'image couvre toute la surface */
     background-position: center;
-    height: 300px;
-    /* Ajuste la hauteur selon tes préférences */
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
