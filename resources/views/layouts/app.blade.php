@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title', 'Mon Application Laravel')</title>
 
     <!-- Google Fonts -->
@@ -69,7 +71,46 @@
         });
     </script>
 
-    <!-- JS -->
+    <!-- Script spécifique pour la gestion du panier -->
+    @yield('scripts')
+
+    <!-- JS App -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Toast Container -->
+<div id="toast-container" class="position-fixed top-0 end-0 mt-3 me-3 w-auto"></div>
+
+
+<!-- Bootstrap Toast JS -->
+<script>
+    function showToast(message, type = 'success') {
+        // Crée un élément Toast
+        const toast = document.createElement('div');
+        toast.classList.add('toast', 'fade', 'bg-' + type, 'text-white');
+        toast.style = 'min-width: 250px;';
+
+        // Contenu du Toast
+        toast.innerHTML = `
+            <div class="toast-body">
+                ${message}
+            </div>
+        `;
+
+        // Ajouter le Toast au conteneur
+        const toastContainer = document.getElementById('toast-container');
+        toastContainer.appendChild(toast);
+
+        // Initialiser le Toast avec l'option 'autohide' et la durée d'affichage
+        const toastInstance = new bootstrap.Toast(toast, {
+            animation: true,  // Animation d'apparition et de disparition
+            delay: 3000,      // Temps avant de disparaître (en ms)
+            autohide: true    // Le Toast se cache automatiquement après le délai
+        });
+
+        // Afficher le Toast
+        toastInstance.show();
+    }
+</script>
+
+
 </body>
 </html>
