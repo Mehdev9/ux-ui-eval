@@ -97,34 +97,30 @@
     </div>
 
     <script>
-        function addToCart(productId) {
+       function addToCart(productId) {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const formData = new FormData();
+    formData.append('_token', csrfToken);
 
-            // Récupérer le token CSRF
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch(`/cart/add/${productId}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showToast('Produit ajouté au panier !', 'success');
+                updateCartIcon(data.cartCount);
+            } else {
+                showToast('Erreur lors de l\'ajout au panier', 'danger');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            showToast('Une erreur s\'est produite.', 'danger');
+        });
+}
 
-            // Créer le form data pour envoyer avec la requête
-            const formData = new FormData();
-            formData.append('_token', csrfToken);
-
-            // Effectuer la requête AJAX pour ajouter au panier
-            fetch(`/cart/add/${productId}`, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Produit ajouté au panier !');
-                        updateCartIcon(data.cartCount); // Mise à jour du compteur
-                    } else {
-                        alert('Erreur lors de l\'ajout au panier');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    alert('Une erreur s\'est produite.');
-                });
-        }
 
         // Mise à jour de l'icône du panier avec le nouveau nombre d'articles
         function updateCartIcon(cartCount) {
