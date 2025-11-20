@@ -150,16 +150,25 @@
                 });
         }
 
-
         // Mise à jour de l'icône du panier avec le nouveau nombre d'articles
-        function updateCartIcon(cartCount) {
-            // Sélectionne l'élément avec la classe .cart-counter
-            const cartCountElement = document.querySelector('.cart-counter');
-            if (cartCountElement) {
-                cartCountElement.innerText = cartCount; // Met à jour le texte avec le nombre d'articles
-            } else {
-                console.log('L\'élément du compteur de panier n\'a pas été trouvé.');
-            }
+function updateCartIcon(cartCount) {
+    const cartCountElement = document.querySelector('.cart-counter');
+    
+    // Si l'élément de compteur existe
+    if (cartCountElement) {
+        // Mettre à jour le texte du compteur avec le nombre d'articles
+        cartCountElement.innerText = cartCount;
+
+        // Si le nombre d'articles est supérieur à 0, afficher la pastille
+        if (cartCount > 0) {
+            cartCountElement.classList.add('show');  // Afficher la pastille
+        } else {
+            cartCountElement.classList.remove('show'); // Cacher la pastille si le panier est vide
         }
+    } else {
+        console.log('L\'élément du compteur de panier n\'a pas été trouvé.');
+    }
+}
+
     </script>
 @endsection
