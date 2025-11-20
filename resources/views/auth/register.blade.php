@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Inscription')
+@section('header_title', 'Inscription')
+@section('header_subtitle', 'Créez votre compte pour continuer.')
 
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" data-aos="flip-down" style="box-shadow: 0 4px 30px rgba(68, 145, 227, 0.2);">
                 <div class="card-header">
                     <h3>Inscription</h3>
                 </div>
