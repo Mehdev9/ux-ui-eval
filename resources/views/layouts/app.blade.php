@@ -44,7 +44,7 @@
         </div>
     </header>
         <!-- Contenu principal -->
-        <div class="container-fluid">
+        <div>
             @yield('content')
             <!-- Le contenu spécifique à chaque page -->
         </div>
