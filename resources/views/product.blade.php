@@ -4,19 +4,22 @@
 @section('header_subtitle', 'Découvrez notre sélection de produits.')
 
 <style>
-    .product-img {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    /* Effet hover sur les images des types de produits */
+.product-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .product-img:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+.product-img:hover {
+    transform: scale(1.1); /* Agrandit l'image au survol */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile autour de l'image */
+}
 
-    .product-select input[type="radio"]:checked + img {
-        border: 3px solid #007bff;
-        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
-    }
+/* Style pour les images sélectionnées (lorsqu'un type est sélectionné) */
+.product-select input[type="radio"]:checked + img {
+    border: 3px solid #007bff; /* Ajoute une bordure bleue à l'image sélectionnée */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5); /* Ombre plus marquée pour l'image sélectionnée */
+}
+
 </style>
 
 @section('content')
@@ -24,14 +27,15 @@
         <form action="{{ route('products.index') }}" method="GET">
             <div class="row">
 
-                <!-- Bouton d'aide -->
-                <div class="container-fluid text-center">
-                    <button type="button" class="btn btn-warning mb-3" data-bs-toggle="modal" data-bs-target="#helpModal">
-                        Besoin d'aide pour trouver un article ?
-                    </button>
-                </div>
+               <!-- Bouton d'aide -->
+<div class="container-fluid text-center">
+    <button type="button" class="btn btn-warning mb-3" data-toggle="modal" data-target="#helpModal">
+        Besoin d'aide pour trouver un article ?
+    </button>
+</div>
 
-               <!-- Modal -->
+
+          <!-- Modal -->
 <div class="modal fade p-3" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content p-3">
@@ -50,60 +54,54 @@
                     <label class="form-label">Quel type de produit vous intéresse ?</label>
                     <div class="row">
                         <!-- PC -->
-                        <div class="col-4 text-center">
-                            <label for="type_pc" class="product-select">
-                                <input type="radio" name="type" id="type_pc" value="pc" class="d-none" 
-                                       @if (request('type') == 'pc') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_pc">
+                                <input type="radio" name="type" id="type_pc" value="pc" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="PC" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>PC</p>
                             </label>
                         </div>
 
                         <!-- Souris -->
-                        <div class="col-4 text-center">
-                            <label for="type_souris" class="product-select">
-                                <input type="radio" name="type" id="type_souris" value="souris" class="d-none" 
-                                       @if (request('type') == 'souris') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_souris">
+                                <input type="radio" name="type" id="type_souris" value="souris" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="Souris" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>Souris</p>
                             </label>
                         </div>
 
                         <!-- Clavier -->
-                        <div class="col-4 text-center">
-                            <label for="type_clavier" class="product-select">
-                                <input type="radio" name="type" id="type_clavier" value="clavier" class="d-none" 
-                                       @if (request('type') == 'clavier') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_clavier">
+                                <input type="radio" name="type" id="type_clavier" value="clavier" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="Clavier" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>Clavier</p>
                             </label>
                         </div>
 
                         <!-- Ecran -->
-                        <div class="col-4 text-center">
-                            <label for="type_ecran" class="product-select">
-                                <input type="radio" name="type" id="type_ecran" value="ecran" class="d-none" 
-                                       @if (request('type') == 'ecran') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_ecran">
+                                <input type="radio" name="type" id="type_ecran" value="ecran" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="Ecran" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>Ecran</p>
                             </label>
                         </div>
 
                         <!-- Casque -->
-                        <div class="col-4 text-center">
-                            <label for="type_casque" class="product-select">
-                                <input type="radio" name="type" id="type_casque" value="casque" class="d-none" 
-                                       @if (request('type') == 'casque') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_casque">
+                                <input type="radio" name="type" id="type_casque" value="casque" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="Casque" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>Casque</p>
                             </label>
                         </div>
 
                         <!-- Imprimante -->
-                        <div class="col-4 text-center">
-                            <label for="type_imprimante" class="product-select">
-                                <input type="radio" name="type" id="type_imprimante" value="imprimante" class="d-none" 
-                                       @if (request('type') == 'imprimante') checked @endif>
+                        <div class="col-4 text-center product-select">
+                            <label for="type_imprimante">
+                                <input type="radio" name="type" id="type_imprimante" value="imprimante" class="d-none">
                                 <img src="{{ asset('assets/img/header-1.jpg') }}" alt="Imprimante" class="img-fluid product-img" style="width: 100px; cursor: pointer;">
                                 <p>Imprimante</p>
                             </label>
@@ -145,6 +143,15 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#helpModal').modal('show'); // Ouvre le modal dès que la page est prête
+    });
+</script>
+
 
                 {{-- Left Sidebar for Filters --}}
                 <div class="col-md-3 pe-4" data-aos="flip-right">
