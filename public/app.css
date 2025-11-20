@@ -78,7 +78,7 @@ body {
 
 
 .navbar a:hover {
-    color: red; /* Optionnel : changer la couleur du texte au survol */
+    color: #4491e3; /* Optionnel : changer la couleur du texte au survol */
 }
 
 /* .navbar a:hover::after {

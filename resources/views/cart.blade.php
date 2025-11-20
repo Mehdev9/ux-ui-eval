@@ -1,57 +1,64 @@
 @extends('layouts.app')
 
+@section('header_title', 'Mon panier')
+@section('header_subtitle', 'Gérez les articles que vous avez ajoutés à votre panier.')
+
 @section('content')
 <div class="cart-container py-5">
     <div class="container">
-        <h1 class="cart-title text-center mb-4">Mon Panier</h1>
+        <div class="card shadow-sm mb-4" style="box-shadow: 0 4px 30px rgba(68, 145, 227, 0.2);">
+            <div class="card-body">
+                <h1 class="cart-title text-center mb-4">Mon Panier</h1>
 
-        <!-- Si le panier est vide -->
-        @if(session('cart') && count(session('cart')) > 0)
-        <div class="cart-items">
-            @foreach(session('cart') as $item)
-            <div class="cart-item card shadow-sm mb-4" data-aos="fade-up">
-                <div class="row no-gutters">
-                    <!-- Image du produit -->
-                    <div class="col-md-3">
-                        <img src="{{ asset('storage/'.$item['image']) }}" alt="{{ $item['name'] }}" class="cart-item-image img-fluid rounded">
-                    </div>
+                <!-- Si le panier est vide -->
+                @if(session('cart') && count(session('cart')) > 0)
+                <div class="cart-items">
+                    @foreach(session('cart') as $item)
+                    <div class="cart-item card shadow-sm mb-4" data-aos="flip-up" style="box-shadow: 0 4px 30px rgba(68, 145, 227, 0.2);">
+                        <div class="row no-gutters">
+                            <!-- Image du produit -->
+                            <div class="col-md-3">
+                                <img src="{{ asset('storage/'.$item['image']) }}" alt="{{ $item['name'] }}" class="cart-item-image img-fluid rounded">
+                            </div>
 
-                    <!-- Détails du produit -->
-                    <div class="col-md-6">
-                        <div class="cart-item-details p-3">
-                            <h3 class="cart-item-title">{{ $item['name'] }}</h3>
-                            <p class="cart-item-price text-muted">{{ number_format($item['price'], 2, ',', ' ') }} €</p>
-                            
-                            <!-- Formulaire pour mettre à jour la quantité -->
-                            <div class="d-flex align-items-center">
-                                <label for="quantity-{{ $item['id'] }}" class="mr-2">Quantité:</label>
+                            <!-- Détails du produit -->
+                            <div class="col-md-6">
+                                <div class="cart-item-details p-3">
+                                    <h3 class="cart-item-title">{{ $item['name'] }}</h3>
+                                    <p class="cart-item-price text-muted">{{ number_format($item['price'], 2, ',', ' ') }} €</p>
+                                    
+                                    <!-- Formulaire pour mettre à jour la quantité -->
+                                    <div class="d-flex align-items-center">
+                                        <label for="quantity-{{ $item['id'] }}" class="mr-2">Quantité:</label>
 
-                                <!-- Compteur de quantité -->
-                                <button type="button" class="btn btn-light btn-sm" onclick="updateQuantity({{ $item['id'] }}, -1)">-</button>
-                                <input type="number" id="quantity-{{ $item['id'] }}" name="quantity" value="{{ $item['quantity'] }}" min="1" max="99" class="form-control w-25 mx-2" style="font-size: 1rem;" onchange="updateQuantity({{ $item['id'] }}, this.value)">
-                                <button type="button" class="btn btn-light btn-sm" onclick="updateQuantity({{ $item['id'] }}, 1)">+</button>
+                                        <!-- Compteur de quantité -->
+                                        <button type="button" class="btn btn-light btn-sm" onclick="updateQuantity({{ $item['id'] }}, -1)">-</button>
+                                        <input type="number" id="quantity-{{ $item['id'] }}" name="quantity" value="{{ $item['quantity'] }}" min="1" max="99" class="form-control w-25 mx-2" style="font-size: 1rem;" onchange="updateQuantity({{ $item['id'] }}, this.value)">
+                                        <button type="button" class="btn btn-light btn-sm" onclick="updateQuantity({{ $item['id'] }}, 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actions (Supprimer) -->
+                            <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
+                                <a href="{{ route('cart.remove', $item['id']) }}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Actions (Supprimer) -->
-                    <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
-                        <a href="{{ route('cart.remove', $item['id']) }}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a>
-                    </div>
+                    @endforeach
                 </div>
+
+                <!-- Total et bouton de commande -->
+                <div class="cart-total d-flex justify-content-between align-items-center mt-4">
+                    <h2 class="text-dark">Total: {{ number_format($total, 2, ',', ' ') }} €</h2>
+                    <a href="#" class="btn btn-success btn-lg btn-rounded shadow-sm">Procéder au paiement</a>
+                </div>
+
+                @else
+                <p class="text-center text-muted">Votre panier est vide. Ajoutez des produits pour commencer vos achats !</p>
+                @endif
             </div>
-            @endforeach
         </div>
-
-        <!-- Total et bouton de commande -->
-        <div class="cart-total d-flex justify-content-between align-items-center mt-4">
-            <h2 class="text-dark">Total: {{ number_format($total, 2, ',', ' ') }} €</h2>
-            <a href="#" class="btn btn-success btn-lg btn-rounded shadow-sm">Procéder au paiement</a>
-        </div>
-
-        @else
-        <p class="text-center text-muted">Votre panier est vide. Ajoutez des produits pour commencer vos achats !</p>
-        @endif
     </div>
 </div>
 @endsection
@@ -100,7 +107,7 @@
             background-color: #fff;
             padding: 15px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 30px rgba(68, 145, 227, 0.2); /* Shadow comme le profil */
         }
 
         .form-control {
@@ -146,6 +153,7 @@
         }
     </style>
 @endsection
+
 
 @section('scripts')
    @section('scripts')
