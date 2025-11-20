@@ -3,6 +3,59 @@
 @section('header_title', 'Nos produits')
 @section('header_subtitle', 'Découvrez notre sélection de produits.')
 
+@section('styles')
+<style>
+    .category-card-image {
+        transition: transform 0.2s;
+    }
+    .category-card-image:hover {
+        transform: translateY(-5px);
+    }
+    .category-card-image img {
+        width: 100px; /* Fixed width */
+        height: 100px; /* Fixed height */
+        object-fit: cover;
+    }
+
+    .compact-carousel .carousel-control-prev,
+    .compact-carousel .carousel-control-next {
+        width: 2rem;
+        height: 2rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 1;
+        transition: box-shadow 0.2s;
+    }
+    .compact-carousel .carousel-control-prev {
+        left: -2.5rem;
+    }
+    .compact-carousel .carousel-control-next {
+        right: -2.5rem;
+    }
+    .compact-carousel .carousel-control-prev:hover,
+    .compact-carousel .carousel-control-next:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    }
+    .compact-carousel .carousel-control-prev-icon,
+    .compact-carousel .carousel-control-next-icon {
+        background-image: none;
+        color: #343a40;
+        font-size: 1rem;
+        line-height: 1;
+    }
+    .compact-carousel .carousel-control-prev-icon::before {
+        content: '‹';
+        font-weight: bold;
+    }
+    .compact-carousel .carousel-control-next-icon::before {
+        content: '›';
+        font-weight: bold;
+    }
+</style>
+@endsection
 <style>
     /* Effet hover sur les images des types de produits */
 .product-img {
@@ -23,6 +76,54 @@
 </style>
 
 @section('content')
+@php
+    $productTypes = [
+        'pc' => 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=300&h=300&fit=crop',
+        'souris' => 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=300&h=300&fit=crop',
+        'clavier' => 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=300&h=300&fit=crop',
+        'ecran' => 'https://www.configspc.com/wp-content/uploads/2017/08/ecranrog2.jpg',
+        'casque' => 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=300&h=300&fit=crop',
+        'imprimante' => 'https://asset.conrad.com/media10/isa/160267/c1/-/fr/1378374_ZB_05_FB/image.jpg',
+    ];
+    $typesChunks = array_chunk($productTypes, 6, true);
+@endphp
+
+<div class="container-fluid py-4 bg-white border-bottom">
+    <div class="container position-relative">
+        <h4 class="font-weight-bold mb-4 text-center" data-aos="fade-up">Parcourir par catégorie</h4>
+        <div id="categoryCarousel" class="carousel slide compact-carousel" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                @foreach($typesChunks as $index => $chunk)
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    <div class="row">
+                        @foreach($chunk as $type => $imageUrl)
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="{{ route('products.index', ['type[]' => $type]) }}" class="category-card-image text-decoration-none text-dark d-block text-center mb-4">
+                                <img src="{{ $imageUrl }}" class="img-fluid rounded-circle p-2 border" alt="{{ ucfirst($type) }}">
+                                <div class="category-card-title mt-2">
+                                    <h6 class="font-weight-bold">{{ ucfirst($type) }}</h6>
+                                </div>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @if(count($typesChunks) > 1)
+            <a class="carousel-control-prev" href="#categoryCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#categoryCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            @endif
+        </div>
+    </div>
+</div>
+
     <div class="container-fluid mt-5">
         <form action="{{ route('products.index') }}" method="GET">
             <div class="row">
@@ -274,7 +375,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        {{ $products->links('pagination::bootstrap-5') }}
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>
