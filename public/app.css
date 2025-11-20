@@ -49,7 +49,7 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: #fff;
+    color: #0c4a72;
     font-size: 18px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -58,9 +58,40 @@ body {
     position: relative;
 }
 
-.navbar a:hover::after {
+/* Effet de soulignement sur tous les liens de la navbar sauf ceux avec la classe .dropdown-toggle */
+.navbar a:not(.dropdown-toggle)::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px; /* Modification de l'épaisseur du soulignement */
+    background-color: #fff; /* Modification de la couleur */
+    left: 50%;
+    bottom: -2px; /* Décalage vers le bas */
+    transform: translateX(-50%);
+    transition: width 0.5s ease, transform 0.5s ease; /* Modification de la vitesse de l'animation */
+}
+
+.navbar a:not(.dropdown-toggle):hover::after {
     width: 100%;
     transform: translateX(-50%) scaleX(1);
+}
+
+
+.navbar a:hover {
+    color: red; /* Optionnel : changer la couleur du texte au survol */
+}
+
+/* .navbar a:hover::after {
+    width: 100%;
+    transform: translateX(-50%) scaleX(1);
+} */
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff  !important;; /* Texte blanc */
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #f8f9fa; /* Blanc plus clair au survol */
 }
 
 /* Aligner les éléments du compte et du panier */
@@ -132,7 +163,26 @@ body {
     background-color: #f0f0f0;
 }
 
+/* Style du compteur comme une pastille rouge */
+.navbar .cart-counter {
+    position: absolute; /* Positionner par rapport à l'icône */
+    top: -1px;  /* Décalage vers le haut */
+    right: -5px;  /* Décalage vers la droite */
+    background-color: #e74c3c; /* Rouge vif pour la pastille */
+    color: #fff; /* Texte en blanc */
+    border-radius: 50%; /* Rendre la pastille ronde */
+    padding: 2px 7px; /* Taille de la pastille */
+    font-size: 12px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    display: none; /* Cacher par défaut */
+    z-index: 100; /* S'assurer que la pastille soit au-dessus de l'icône */
+    text-align: center; /* Centrer le texte dans la pastille */
+}
 
+/* Afficher la pastille si le compteur est supérieur à 0 */
+.navbar .cart-counter.show {
+    display: inline-block; /* Afficher la pastille */
+}
 
 /* --- Footer --- */
 
@@ -271,6 +321,7 @@ body {
     font-size: 14px;
     color: #ecf0f1;
 }
+
 
 /* --- HEADER --- */
 .header-section {
