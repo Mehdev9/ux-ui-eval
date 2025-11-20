@@ -28,6 +28,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+    @yield('styles')
 </head>
 <body class="bg-light">
 
