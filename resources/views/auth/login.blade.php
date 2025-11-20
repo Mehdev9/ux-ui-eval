@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Connexion')
+@section('header_title', 'Connection')
+@section('header_subtitle', 'Connectez-vous à votre compte pour continuer.')
 
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" data-aos="flip-down" style="box-shadow: 0 4px 30px rgba(68, 145, 227, 0.2);">
                 <div class="card-header">
                     <h3>Connexion</h3>
                 </div>

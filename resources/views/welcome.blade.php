@@ -27,7 +27,7 @@
                                         <h5 class="card-title">PC Gamer XYZ</h5>
                                         <p class="card-text">Un PC performant pour les jeux les plus récents.</p>
                                         <a href="{{ route('products.show', ['product' => 1]) }}"
-                                            class="btn btn-primary">Voir le produit</a>
+                                            class="btn btn-primary rounded-pill">Voir le produit</a>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                         <p class="card-text">Un clavier réactif avec des switches rouges pour les gamers.
                                         </p>
                                         <a href="{{ route('products.show', ['product' => 2]) }}"
-                                            class="btn btn-primary">Voir le produit</a>
+                                            class="btn btn-primary rounded-pill">Voir le produit</a>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                         <h5 class="card-title">Casque Audio Premium</h5>
                                         <p class="card-text">Un son immersif et un confort optimal pour de longues
                                             sessions.</p>
-                                        <a href="#" class="btn btn-primary">Voir le produit</a>
+                                        <a href="#" class="btn btn-primary rounded-pill">Voir le produit</a>
                                     </div>
                                 </div>
                             </div>
